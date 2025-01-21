@@ -25,7 +25,7 @@ export const addBlog = async (req, res, next) => {
             author: data.author,
             category: data.category,
             title: data.title,
-            slug: `${data.slug}-${Math.round(Math.random() & 100000)}`,
+            slug: `${data.slug}-${Math.round(Math.random() * 100000)}`,
             featuredImage: featuredImage,
             blogContent: encode(data.blogContent),
         })
