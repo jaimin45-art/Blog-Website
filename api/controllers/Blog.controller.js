@@ -20,12 +20,12 @@ export const addBlog = async (req, res, next) => {
 
             featuredImage = uploadResult.secure_url
         }
-        console.log(data)
+        
         const blog = new Blog({
             author: data.author,
             category: data.category,
             title: data.title,
-            slug: data.slug,
+            slug: `${data.slug}-${Math.round(Math.random() & 100000)}`,
             featuredImage: featuredImage,
             blogContent: encode(data.blogContent),
         })
