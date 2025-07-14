@@ -11,11 +11,11 @@ export const userSlice = createSlice({
     reducers: {
         setUser: (state, action) => {
             const payload = action.payload
-            state.isLoggedIn = true
+            state.isLoggedIn = true;
             state.user = payload
         },
         removeUser: (state, action) => {
-            state.isLoggedIn = false
+            state.isLoggedIn = false;
             state.user = {}
         }
     },

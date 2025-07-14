@@ -1,6 +1,6 @@
 import cloudinary from "../config/cloudinary.js"
 import { handleError } from "../helpers/handleError.js"
-import User from "../models/user.model.js"
+import User from "../model/user.js"
 import bcryptjs from 'bcryptjs'
 
 export const getUser = async (req, res, next) => {

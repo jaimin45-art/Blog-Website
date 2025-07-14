@@ -6,12 +6,12 @@ import { getEvn } from "./getEnv";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: getEvn('VITE_FIREBASE_API'),
-    authDomain: "yt-mern-blog.firebaseapp.com",
-    projectId: "yt-mern-blog",
-    storageBucket: "yt-mern-blog.firebasestorage.app",
-    messagingSenderId: "150248092393",
-    appId: "1:150248092393:web:34bc9843d732ee4be7f678"
+     apiKey: "AIzaSyD9WvlynCiKQbnTor4-ah8dA_x_ea8_L14",
+  authDomain: "otp-project-41de9.firebaseapp.com",
+  projectId: "otp-project-41de9",
+  storageBucket: "otp-project-41de9.firebasestorage.app",
+  messagingSenderId: "412470723319",
+  appId: "1:412470723319:web:4303b6fab612bd3f3409f2",
 };
 
 // Initialize Firebase
