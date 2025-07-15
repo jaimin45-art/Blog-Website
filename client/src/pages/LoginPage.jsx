@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from '@/redux/user/user.slice';
-import { useNavigate } from 'react-router-dom';
-import { RouteIndex } from '@/helpers/RouteName';
-import { Link } from 'react-router-dom';
-import { RouteSignUp } from '@/helpers/RouteName';
+import { useNavigate, Link } from 'react-router-dom';
+import { RouteIndex, RouteSignUp } from '@/helpers/RouteName';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -30,8 +28,8 @@ const LoginPage = () => {
       const data = await res.json();
 
       if (res.ok) {
-        dispatch(setUser(data.user)); // 🔥 SET USER IN REDUX
-        navigate(RouteIndex);         // 🔄 NAVIGATE TO HOMEPAGE
+        dispatch(setUser(data.user));
+        navigate(RouteIndex);
       } else {
         setErrorMsg(data.message);
       }
@@ -41,36 +39,67 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="p-5 max-w-md mx-auto mt-10">
-      <h2 className="text-2xl font-bold mb-4">Login</h2>
+    <div className="min-h-screen bg-[#E6FFFA] flex items-center justify-center px-4 py-10">
+      <div className="bg-white rounded-2xl shadow-lg w-full max-w-md overflow-hidden">
+        
+        {/* Top image */}
+        <div className="w-full h-40 overflow-hidden">
+          <img
+            src="/public/girl.jpeg"
+            alt="Login visual"
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-      {errorMsg && <p className="text-red-500 mb-2">{errorMsg}</p>}
+        {/* Form content */}
+        <div className="p-6 sm:p-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Hello again!</h2>
 
-      <form onSubmit={handleLogin} className="flex flex-col gap-4">
-        <input
-          type="email"
-          className="border p-2"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <p className="text-gray-600 mb-6 text-sm">
+            Enter your credentials to continue your journey into our blog world.
+          </p>
 
-        <input
-          type="password"
-          className="border p-2"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          {errorMsg && <p className="text-red-500 mb-3 text-sm">{errorMsg}</p>}
 
-        <button className="bg-blue-600 text-white py-2 rounded">Login</button>
-      </form>
-      <p className="text-center mt-4 text-sm">
-  Don't have an account?{' '}
-  <Link to={RouteSignUp} className="text-blue-600 font-medium hover:underline">
-    Sign Up
-  </Link>
-</p>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <input
+              type="email"
+              className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+            <input
+              type="password"
+              className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <button
+              type="submit"
+              className="w-full bg-[#FFD6EC] hover:bg-[#ffb8e1] text-black font-semibold py-2 rounded transition"
+            >
+              Login
+            </button>
+          </form>
+
+          <div className="text-right mt-2">
+            <a href="#" className="text-sm text-blue-600 hover:underline">Forgot your password?</a>
+          </div>
+
+          <p className="text-center text-sm mt-4">
+            Don’t have an account?{' '}
+            <Link to={RouteSignUp} className="text-blue-600 font-medium hover:underline">
+              Sign up
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
